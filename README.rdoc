@@ -1,0 +1,17 @@
+== README
+
+You'll find main page here "/"
+
+* Ruby version "2.2.1"
+
+* RoR basic gem set was used plu extra gems:
+  - 'HTTPparty' to work with API
+  - 'better_errors', 'binding_of_caller' to handle errors
+
+
+
+* ...
+
+
+Please feel free to use a different markup language if you do not plan to run
+<tt>rake doc:app</tt>.

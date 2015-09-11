@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title></title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div></div>
+
+  <div class="container">
+    <h3>Your IP address is <%=@client_ip%></h3>
+    <h4>You are in <%=@locate%></h4>
+    <br>
+  
+  <div class="container">
+    <% if @departures["body"]["error"].nil? && @departures["body"]["predictions"]%>
+    <table class="table table-condensed">
+      <%@departures["body"]["predictions"].each do |stop|%>
+      <ul class="list-group">
+        <% unless  stop["direction"].nil? %>
+          <%= render partial: 'stop', locals: {stop: stop}%>
+        <% end %>
+      </ul>
+      <% end %>
+    </table>
+    <% else %>
+      <h3>No public transport nearby</h3>
+    <% end %>
+  </div>
+</body>
+</html>
