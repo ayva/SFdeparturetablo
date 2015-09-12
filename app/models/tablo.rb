@@ -1,11 +1,11 @@
 class Tablo
 
-  attr_reader :data_json, :data, :agency, :stops,:departures
+  attr_reader :lon, :lat, :agency, :stops,:departures
 
   def initialize(ip)
     @base_url="http://webservices.nextbus.com/service/publicXMLFeed?"
-    setCoordinates(ip);
-
+    getCoordinates(ip);
+  
     @radius=0.004
 
     #Stores all trasport and stops with location for Northern California
@@ -22,10 +22,15 @@ class Tablo
     
   end
 
+  def getCoordinates(ip)
+    location=JSON.parse(HTTParty.get("http://freegeoip.net/json/"+ip).to_json)
+    @lon=location["longitude"]
+    @lat=location["latitude"]
+  end
 
   def setCoordinates(ip)
     location = Geokit::Geocoders::IpGeocoder.geocode(ip)
-    if !location.longitude.nil? && !location.latitude.nil?
+    if !location.longitude.nil? || !location.latitude.nil? || location.longitude!=0 || location.latitude!=0
       @lon=location.longitude
       @lat=location.latitude
     else
@@ -44,7 +49,7 @@ class Tablo
       if agency["regionTitle"]=="California-Northern" 
         #&& agency["tag"]=="emery"
         @agency[agency["tag"]]=agency["title"]
-        #for testing will take only first agent - emery
+        
         break;
       end
     end
@@ -112,7 +117,7 @@ class Tablo
         end
       end
       @departures=getData(str)
-      #puts str
+      
     end
     
 
