@@ -3,7 +3,7 @@ class PageController < ApplicationController
   def index
     @client_ip = find_ip
     @locate=city_state_for_index_info
-    
+
     @departures=Tablo.new(@client_ip).departures
   
   end
