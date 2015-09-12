@@ -24,8 +24,15 @@ class Tablo
 
   def getCoordinates(ip)
     location=JSON.parse(HTTParty.get("http://freegeoip.net/json/"+ip).to_json)
-    @lon=location["longitude"]
-    @lat=location["latitude"]
+    if !location["longitude"].nil? && location["longitude"]!=0 && !location["latitude"].nil? && location["latitude"]!=0
+      @lon=location["longitude"]
+      @lat=location["latitude"]
+    else
+      @lon=-122.3117
+      @lat=37.9158
+    end
+  
+
   end
 
   def setCoordinates(ip)

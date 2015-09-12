@@ -8,7 +8,7 @@ gem 'httparty'
 gem 'geocoder'
 gem 'geokit-rails'
 
-
+gem 'unicorn'
 
 gem 'pg'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
