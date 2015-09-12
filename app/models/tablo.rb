@@ -4,7 +4,8 @@ class Tablo
 
   def initialize(ip)
     @base_url="http://webservices.nextbus.com/service/publicXMLFeed?"
-    getCoordinates(ip);
+     @lon=-122.3117
+      @lat=37.9158
   
     @radius=0.004
 

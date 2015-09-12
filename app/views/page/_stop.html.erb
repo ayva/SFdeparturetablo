@@ -1,6 +1,6 @@
         <li class="list-group-item">
           <% if stop["direction"]["prediction"].length>0 %>
-            <h4>Stop: <%=stop["stopTitle"]%>, provider <%=stop["agencyTitle"]%> follows route <%=stop["routeTitle"]%></h4>tag is <%=stop["stopTag"]%>
+            <h4>Stop: <%=stop["stopTitle"]%>, provider <%=stop["agencyTitle"]%> follows route <%=stop["routeTitle"]%></h4>
             <br>
             
             <% stop["direction"]["prediction"].each do |time|%>
