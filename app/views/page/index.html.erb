@@ -17,7 +17,7 @@
   
   <div class="container">
     <% if @departures["body"]["error"].nil? && @departures["body"]["predictions"]%>
-    has predictions
+
     <table class="table table-condensed">
 
       <%@departures["body"]["predictions"].each do |stop|%>
